@@ -1,6 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import { API_URL } from "../lib/api";
+import Logo from "../components/Logo";
+import Navlinks from "../components/Navlinks";
+import { Search } from "lucide-react";
+
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 interface ApiProduct {
@@ -308,33 +312,8 @@ export default function Home() {
         <div className="flex justify-between items-center h-20 px-8 w-full">
           {/* Logo + Nav links */}
           <div className="flex items-center gap-8">
-            <span
-              className="text-2xl font-black tracking-tight text-[#191c1e]"
-              style={{ fontFamily: "Geist, sans-serif" }}
-            >
-              LuxeMarket
-            </span>
-            <nav className="hidden md:flex gap-8">
-              {["Collections", "New Arrivals", "Sustainability", "Journal"].map(
-                (item) => (
-                  <a
-                    key={item}
-                    href="#"
-                    className={`text-sm font-semibold transition-colors pb-0.5 ${
-                      item === "Collections"
-                        ? "text-[#3525cd] border-b-2 border-[#3525cd]"
-                        : "text-[#464555] hover:text-[#3525cd]"
-                    }`}
-                    style={{
-                      fontFamily: "Geist, sans-serif",
-                      letterSpacing: "0.02em",
-                    }}
-                  >
-                    {item}
-                  </a>
-                ),
-              )}
-            </nav>
+            <Logo />
+            <Navlinks />
           </div>
 
           {/* Actions */}
@@ -343,17 +322,7 @@ export default function Home() {
               onClick={handleSearch}
               className="p-2 hover:bg-gray-100 rounded-full transition-colors"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                className="w-5 h-5 fill-none stroke-[#464555] stroke-[1.5]"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-                />
-              </svg>
+              <Search className="w-5 h-5 fill-none stroke-[#464555] stroke-[1.5]" />
             </button>
 
             <button
